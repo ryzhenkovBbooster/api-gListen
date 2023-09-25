@@ -8,11 +8,11 @@ export class AuthController {
 
     @Post('/login')
     async login(@Body() dto: CreateUserDto){
-        return this.authService.login(dto)
+        return await this.authService.login(dto)
     }
 
     @Post('/register')
     async register(@Body() dto: CreateUserDto){
-        return this.authService.registration(dto)
+        return await this.authService.registration(dto)
     }
 }

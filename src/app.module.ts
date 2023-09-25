@@ -6,6 +6,7 @@ import {ConfigModule} from "@nestjs/config";
 import { UserModule } from './user/user.module';
 import {User} from "./user/user.model";
 import { AuthModule } from './auth/auth.module';
+import { AccountsModule } from './accounts/accounts.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { AuthModule } from './auth/auth.module';
           autoLoadModels: true,
       }),
       UserModule,
-      AuthModule
+      AuthModule,
+      AccountsModule
   ],
   controllers: [],
   providers: [],
