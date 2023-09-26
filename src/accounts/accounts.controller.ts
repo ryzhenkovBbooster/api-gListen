@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Post, Put, UseGuards} from '@nestjs/common';
 import {AccountsService} from "./accounts.service";
 import {JwtAuthGuard} from "../auth/jwt-auth.guard";
 import {AddAccDto} from "./dto/add-acc.dto";
@@ -16,5 +16,11 @@ export class AccountsController {
     @Get()
     async getAllAccs(){
         return await this.accService.getAllAcc()
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Put()
+    async updateAcc(@Body() dto: AddAccDto){
+        return await this.accService.putData(dto)
     }
 }
