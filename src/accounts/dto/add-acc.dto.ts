@@ -4,5 +4,6 @@ export class AddAccDto {
     readonly creationTime: string
     readonly deleteTime: string
     readonly active: boolean
+    readonly oldName: string
 
 }

@@ -2,7 +2,7 @@ import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {Accounts} from "./accounts.model";
 import {InjectModel} from "@nestjs/sequelize";
 import {AddAccDto} from "./dto/add-acc.dto";
-import * as http from "http";
+
 
 @Injectable()
 export class AccountsService {
@@ -30,7 +30,7 @@ export class AccountsService {
     async putData(dto: AddAccDto){
         const account = await this.accRepository.update(dto,{
             where:
-                {email: dto.email, fullName: dto.fullName}
+                {email: dto.email, fullName: dto.oldName}
         })
         if(account){
             return account
