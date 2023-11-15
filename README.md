@@ -26,23 +26,30 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Installation postgres
 
 ```bash
-$ npm install
+"https://medium.com/amazon-web-services/setting-up-postgresql-on-ubuntu-ec2-server-instead-of-using-rds-part-1-6e5e0b0894fc"
+```
+
+## Installation node
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
+npm run build
+npm install -g pm2
+pm2 start npm --name "my-api" -- run start
+pm2 startup
+pm2 save
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
 ## Test

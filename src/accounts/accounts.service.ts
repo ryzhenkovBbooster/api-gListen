@@ -30,7 +30,7 @@ export class AccountsService {
     async putData(dto: AddAccDto){
         const account = await this.accRepository.update(dto,{
             where:
-                {email: dto.email, fullName: dto.oldName}
+                {email: dto.oldName, fullName: dto.fullName}
         })
         if(account){
             return account

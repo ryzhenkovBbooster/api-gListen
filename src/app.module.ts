@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import {User} from "./user/user.model";
 import { AuthModule } from './auth/auth.module';
 import { AccountsModule } from './accounts/accounts.module';
+import { ZoomModule } from './zoom/zoom.module';
 
 @Module({
   imports: [
@@ -26,7 +27,9 @@ import { AccountsModule } from './accounts/accounts.module';
       }),
       UserModule,
       AuthModule,
-      AccountsModule
+      AccountsModule,
+      ZoomModule,
+
   ],
   controllers: [],
   providers: [],
