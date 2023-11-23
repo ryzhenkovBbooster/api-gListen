@@ -1,12 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import {Inject, Injectable} from '@nestjs/common';
 import * as crypto from 'crypto'
-
 import * as readline from "readline";
 import * as fs from "fs";
 import axios from "axios";
 import { promisify } from 'util';
 import * as stream from "stream";
-import {str} from "ajv";
+
+import {RedisService} from "../redis/redis.service";
+
 
 @Injectable()
 export class ZoomService {
@@ -14,6 +15,8 @@ export class ZoomService {
     private readonly zoomSecret: string = "InVxdBkUTOCuI3HGwHOYIA"
     async helloWorld(){
         return await 'hello'
+    }
+    constructor(private readonly redis: RedisService) {
     }
 
 
@@ -131,5 +134,18 @@ export class ZoomService {
         // Обработка ошибок
         throw err;
     }
+    }
+
+    async checkInCache(uuid){
+        const cacheData = await this.redis.get(uuid)
+        console.log(cacheData)
+
+        if (cacheData){
+            return true
+        }else{
+
+            await this.redis.set(uuid, 'cashed', 7200 )
+            return false
+        }
     }
 }

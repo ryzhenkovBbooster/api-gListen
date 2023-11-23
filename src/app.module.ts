@@ -9,12 +9,21 @@ import { AuthModule } from './auth/auth.module';
 import { AccountsModule } from './accounts/accounts.module';
 import { ZoomModule } from './zoom/zoom.module';
 
+import { RedisModule } from './redis/redis.module';
+import {RedisService} from "./redis/redis.service";
+
+
 @Module({
   imports: [
       ConfigModule.forRoot({
             envFilePath: `.env`
 
+
       }),
+
+
+
+
       SequelizeModule.forRoot({
           dialect: 'postgres',
           host: process.env.POSTGRES_HOST,
@@ -29,9 +38,14 @@ import { ZoomModule } from './zoom/zoom.module';
       AuthModule,
       AccountsModule,
       ZoomModule,
+      RedisModule,
+
 
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService, RedisService],
+    exports: [
+        RedisService
+    ]
 })
 export class AppModule {}

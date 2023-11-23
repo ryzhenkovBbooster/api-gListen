@@ -9,9 +9,9 @@ const fs= require('fs').promises
 
 
 
-const CREDENTIALS_PATH = path.join(process.cwd(), 'api google drive\\creds.json');
+const CREDENTIALS_PATH = path.join(process.cwd(), 'api google drive/creds.json');
 
-const TOKEN_PATH = path.join(process.cwd(), 'api google drive\\token.json');
+const TOKEN_PATH = path.join(process.cwd(), 'api google drive/token.json');
 
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
 async function oauth() {
