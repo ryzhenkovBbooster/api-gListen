@@ -8,7 +8,7 @@ export const dirPath = {
     //D5 Grinkevich
     '2REnqELvRXWHYD2yW2l-IQ': ['', '1M6daDBAeaN08T1PKorll5iw-ABok6NaV'],
     //BBMC Division 6a
-    '4OLkSGF4Rm-m-lm_H6gh9Q': ['', ''],
+    '4OLkSGF4Rm-m-lm_H6gh9Q': ['', '1RQQ51uYuOvaI5xaMM2RrpAZ2Wu5f-yQp'],
     //ED Balanovskaya
     'Cw4sjzTURV-3iPA9Z3x9Cg': ['', '11q6Ai4jrdsKLLLBLqH-hhqdGRhHdT6TH'],
     //Усманов
