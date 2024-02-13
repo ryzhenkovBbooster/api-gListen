@@ -62,8 +62,10 @@ async function updateToken() {
 // sessionResponse()
 
 
+
+
 async function getMeeting(){
-    const url = 'https://api.zoom.us/v2/meetings/81940012139/recordings'
+    const url = 'https://api.zoom.us/v2/meetings/85225601974/recordings'
     let token = await updateToken()
     token = token.replace(/\s+/g, '')
     const res = await axios.get(url, {

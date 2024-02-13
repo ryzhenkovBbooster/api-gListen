@@ -32,20 +32,30 @@ export class ZoomController {
         // Сохранение лога для всех событий
         await this.zoomService.saveLog(body)
         // Проверка, является ли событие завершением записи и соответствует ли оно условиям
-        if (body.event === "recording.completed" && dirPath.hasOwnProperty(body.payload.object.host_id) && body.payload.object.total_size > 10485760) {
+        if (body.event === "recording.completed" && dirPath.hasOwnProperty(body.payload.object.host_id)) {
             const cache = await this.zoomService.checkInCache(body.event_ts)
             // Проверка на дублирование событий в кэше
             if (cache) {
                 return res.status(200).send('dublicate')
             }
-            // Формирование имени файла из времени начала и темы собрания
             let filename = `${body.payload.object.start_time} ` + `${body.payload.object.topic}`
-            const account_id = body.payload.object.host_id
             filename = filename.replace(/:/g, '-').replace(/[\/\\]/g, ' ');
+
+
+            const filePath = path.join(process.cwd(), '/static') + `/${filename}.mp4`;
+            const meetingId = body.payload.object.id
+
+
+            if (body.payload.object.total_size < 10485760){
+                await this.zoomService.deleteRecord(meetingId, filePath)
+                return res.status(200).json({data: 'Webhook received'})
+
+            }
+            // Формирование имени файла из времени начала и темы собрания
+            const account_id = body.payload.object.host_id
 
             //
 
-            const meetingId = body.payload.object.id
 
             let currentIndex = 0;
             const list = body.payload.object.recording_files

@@ -11,7 +11,8 @@ import { ZoomModule } from './zoom/zoom.module';
 
 import { RedisModule } from './redis/redis.module';
 import {RedisService} from "./redis/redis.service";
-
+import {ServeStaticModule} from "@nestjs/serve-static";
+import { join } from "path"
 
 @Module({
   imports: [
@@ -19,6 +20,10 @@ import {RedisService} from "./redis/redis.service";
             envFilePath: `.env`
 
 
+      }),
+      ServeStaticModule.forRoot({
+          rootPath: join(__dirname, '..', 'static'),
+          serveRoot: '/auth'
       }),
 
 
